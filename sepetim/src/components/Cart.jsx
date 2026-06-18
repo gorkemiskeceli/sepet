@@ -1,15 +1,15 @@
-export default function Cart({ sepet, onCartUpdate, onCartReduce }) {
+export default function Cart({ sepet, onCartUpdate, onCartReduce }) { //stateler ekleniyor burada
 
-  const totalPrice = sepet.reduce((t, product) => t + product.price * product.total, 0);
-  const totalQuantity = sepet.reduce((t, product) => t + product.total, 0);
+  const totalPrice = sepet.reduce((t, product) => t + product.price * product.total, 0); // reduce ile dizideki elemanlar dolaşılıyor 0' ı başlangıç olarak alıp eklenen ürünlerin fiyatlarını topluyor
+  const totalQuantity = sepet.reduce((t, product) => t + product.total, 0); //burası da reduce ile dizideki elemanları geziyor ancak burada fiyat toplamak yerine 0 dan başlayarak kaç ürün ekleniyorsa onları ekliyor
 
   return (
     <div className="max-w-lg mx-auto bg-white rounded-2xl shadow-md p-6 border border-gray-200">
-
+        
       <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-4">
-        <h1 className="text-2xl font-bold text-gray-800">
+        <h1 className="text-2xl font-bold text-gray-800"> 
           Sepetim
-          <span className="text-orange-500 text-lg ml-2">({totalQuantity})</span>
+          <span className="text-orange-500 text-lg ml-2">({totalQuantity})</span> 
         </h1>
       </div>
 

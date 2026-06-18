@@ -6,7 +6,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
-
+//ürünler burada fetch ile çekiliyor
   useEffect(() => {
     fetch("/urunler.json")
       .then((res) => res.json())
@@ -15,24 +15,24 @@ function App() {
         setLoading(false);
       });
   }, []);
-
+//bu fonksiyonda ürünler sepete ekleniyor ürün var mı diye kontrol ediyor 
   const handleAddToCart = (product) => {
     setCart((prev) => {
       const isPresent = prev.find((p) => p.id === product.id);
       if (isPresent) {
-        if (isPresent.total >= product.stok) {
+        if (isPresent.total >= product.stok) {  //eğer sepetteki ürün  stok sayısından büyük veya eşitse daha fazla eklemesini engelliyor
           alert("Stok Kalmadı!");
           return prev;
         }
         return prev.map((p) =>
-          p.id === product.id ? { ...p, total: p.total + 1 } : p
+          p.id === product.id ? { ...p, total: p.total + 1 } : p //aradığım ürün ile eklemeye çalıştığım ürün id si tutuyor mu diye kontrol ediyor eğer eşitse ürünün tüm bilgilerini tutarak eklendikçe totali 1'er olarak arttırıyor
         );
       }
-      if (product.stok <= 0) {
+      if (product.stok <= 0) { //eğer ürün stokta yoksa ürünü eklemiyor
         alert("Stok Kalmadı!");
         return prev;
       }
-      return [
+      return [ //ürün ilk eklendiğinde ürünü koruyorak iç formdaki halinde döndürüyor
         ...prev,
         {
           id: product.id,
@@ -45,8 +45,8 @@ function App() {
     });
   };
 
-  const handleCartUpdate = (id, newTotal) => {
-    if (newTotal <= 0) {
+  const handleCartUpdate = (id, newTotal) => {  //eğer toplam 0 ve 0 dan küçük ise sepetten siliyor değilse map ile total verisini güncelliyor
+    if (newTotal <= 0) {    
       setCart((prev) => prev.filter((p) => p.id !== id));
       return;
     }
@@ -55,7 +55,7 @@ function App() {
     );
   };
 
-  const handleReduce = (id) => {
+  const handleReduce = (id) => {  //filter ile id eşlenen ürünü koruyor eşlenmiyorsa sepetten kaldırıyor
     setCart((prev) => prev.filter((p) => p.id !== id));
   };
   return (

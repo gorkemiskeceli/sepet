@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "ad": "Bluetooth kulaklık",
+        "name": "Bluetooth kulaklık",
         "fiyat": 199.99,
         "stok": 10
     },
