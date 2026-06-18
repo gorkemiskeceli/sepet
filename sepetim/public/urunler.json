@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "ad": "Bluetooth kulaklık",
+        "fiyat": 199.99,
+        "stok": 10
+    },
+    {
+        "id": 2,
+        "ad": "Iphone 15 Pro Max",
+        "fiyat": 7999.99,
+        "stok": 5
+    },
+    {
+        "id": 3,
+        "ad": "Akıllı Saat",
+        "fiyat": 1099.99,
+        "stok": 0
+    },
+    {
+        "id": 4,
+        "ad": "Şarj Adaptörü",
+        "fiyat": 599.99,
+        "stok": 3
+    }
+    
+]
